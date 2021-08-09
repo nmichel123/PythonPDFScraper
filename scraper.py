@@ -9,3 +9,10 @@ with open(FILE_PATH, mode='rb') as f:
     page = reader.getPage(0)
 
     print(page.extractText())
+
+    writer = PyPDF2.PdfFileWriter()
+
+    writer.appendPagesFromReader(reader,after_page_append=None)
+
+    with open ('newdoc.pdf', 'wb') as doc:
+        writer.write(doc)
